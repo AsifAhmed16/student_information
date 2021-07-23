@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Information App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <h4>Student Details ::</h4>
+
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10">
+                            <ul class="personal-info">
+                                <li class="row">
+                                    <span style="color: saddlebrown" class="title"><b>Student Name : </b></span>
+                                    <span style="color: cadetblue" class="text"> {{ data.name }}</span>
+                                </li>
+                                <li class="row">
+                                    <span style="color: saddlebrown" class="title"><b>Age : </b></span>
+                                    <span style="color: cadetblue" class="text"> {{ data.age }}</span>
+                                </li>
+                                <li class="row">
+                                    <span style="color: saddlebrown" class="title"><b>Sex : </b></span>
+                                    <span style="color: cadetblue" class="text"> {{ data.sex }}</span>
+                                </li>
+                                <li class="row">
+                                    <span style="color: saddlebrown" class="title"><b>Fathers Name : </b></span>
+                                    <span style="color: cadetblue" class="text"> {{ data.father_name }}</span>
+                                </li>
+                                <li class="row">
+                                    <span style="color: saddlebrown" class="title"><b>Mothers Name : </b></span>
+                                    <span style="color: cadetblue" class="text"> {{ data.mother_name }}</span>
+                                </li>
+                                <li class="row">
+                                    <span style="color: saddlebrown" class="title"><b>Last Education : </b></span>
+                                    <span style="color: cadetblue" class="text"> {{ data.last_education }}</span>
+                                </li>
+                            </ul>
+                            <div class="m-t-20 text-center">
+                            <a href="{% url 'studentInfo:student_list' %}" class="btn btn-primary">Go Back</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+</body>
+</html>

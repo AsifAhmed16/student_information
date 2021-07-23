@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Information App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css"></script>
+</head>
+
+<body>
+
+<br>
+<br>
+<h4 class="page-title">Student List</h4>
+<br>
+<br>
+
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6 text-right m-b-30">
+            <a href="{% url 'studentInfo:student_add' %}" class="btn btn-primary rounded pull-right"><i
+                    class="fa fa-plus"></i>Add Student</a>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="row">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.level_tag == 'error' %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>
+                            {{ message.message }}
+                        </strong>
+                    </div>
+                {% elif message.level_tag == 'success' %}
+                    <div class=" alert alert-success" role="alert">
+                        <strong>
+                            {{ message.message }}
+                        </strong>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped custom-table m-b-0">
+                    <thead>
+                    <tr>
+                        <th>SL No.</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Father Name</th>
+                        <th>Mother Name</th>
+                        <th>Last Education</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in items %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ data.name }}</td>
+                            <td>{{ data.age }}</td>
+                            <td>{{ data.sex }}</td>
+                            <td>{{ data.father_name }}</td>
+                            <td>{{ data.mother_name }}</td>
+                            <td>{{ data.last_education }}</td>
+                            <td><a href="{% url 'studentInfo:student_edit' data.id %}"
+                                   title="Edit">
+                                <i class="fa fa-pencil m-r-5"></i>Edit</a></td>
+                            <td>
+                                <a href="{% url 'studentInfo:student_details' data.id %}"
+                                   title="View">
+                                    <i class="fa fa-book m-r-5"></i>Details</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.table').dataTable({
+            "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+            "iDisplayLength": 25
+        });
+    });
+</script>
+
+</body>
+</html>
